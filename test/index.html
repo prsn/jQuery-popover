@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+	<title>Simple Popover test page</title>
+	<script type="text/javascript" src="../bower_components/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../simple-popover.js"></script>
+	<link rel="stylesheet" type="text/css" href="../simple-popover.css">
+</head>
+<body>
+	<div>
+		<h3>Demostration of simple popover</h3>
+		<button id="btn">Click to get popover</button>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var btn = $('#btn');
+			btn.on('click', function(e){
+				e.stopPropagation();
+				e.preventDefault();
+				 var settings = {
+				 	values: [
+                               {markup: '<div>Options</div><div class="divider"></div>'},
+                               {faClass: 'fa fa-gear fa-lg', text: 'Preference'},
+                               {faClass: 'fa fa-minus-square fa-lg', faClassColor: 'red', text: 'Logout'}
+                           ],
+                   	color: "blue",
+                   	onClick: function (ind, val) {
+                   		console.log('clicked');
+                   	}
+                   };
+               $(this).parent().simple$popup(settings);
+			});
+			
+		});
+	</script>
+</body>

@@ -1,0 +1,20 @@
+{
+  "name": "simple-popover",
+  "description": "Its a simple pop-over, provides web application a container to render content on it. Position calculation done automatically, there is not support to specify any position. Current implementation only places container just below the source element, but whether it will be left align or right align, it is decided automatically based on available space.",
+  "main": "simple-popover.js",
+  "authors": [
+    "prsn <prsn.pal@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/prsn/jQuery-popover",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.7.x"
+  }
+}
