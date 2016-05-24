@@ -31,7 +31,20 @@
           listMarkup += '<div class="popup-element"  id="option' + index + '" ind="' + index + '">';
           if(value.markup){
             listMarkup += value.markup;
-          } else {
+          } else if ( value.html ) {
+            // value.html.path holds the locatio of the html file
+            listMarkup += '<div id=popup-html-element></div>';
+            $.ajax({
+              url: value.html.path,
+              success: function(result){
+                console.log(result);
+                $('#popup-html-element').html(result);
+              },
+              error: function(err) {
+                $('#popup-html-element').html('Could not get ');
+              }
+            });
+          }else {
             listMarkup+= '<div class="popup-element-icon"><i class="' + value.faClass + '" ';
                       if(value.faClassColor)
                         listMarkup += 'style="color:' + value.faClassColor + '"';
@@ -50,7 +63,7 @@
             + 'z-index:100000;'
             + 'background: transparent;'
             + 'min-height:200px;';
-        
+        console.log(css);
         var markup = '<div style="' + css + '">' 
             + '<div class="popup-wrapper" style="width:' + options.width + '">' + listMarkup + '</div>'
             + '</div></div>';

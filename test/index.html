@@ -6,14 +6,17 @@
 	<link rel="stylesheet" type="text/css" href="../simple-popover.css">
 </head>
 <body>
-	<div>
+	<div style="height:300px;">
 		<h3>Demostration of simple popover</h3>
 		<button id="btn">Click to get popover</button>
+    <div>Divider</div>
+    <button id="btn2">Click to get popover</button>
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var btn = $('#btn');
-			btn.on('click', function(e){
+      var self = $(this);
+      var showPopup = function(e){
 				e.stopPropagation();
 				e.preventDefault();
 				 var settings = {
@@ -27,8 +30,27 @@
                    		console.log('clicked');
                    	}
                    };
-               $(this).parent().simple$popup(settings);
-			});
+               $(this).simple$popup(settings);
+			};
+      
+      var showPopupHtml = function(e){
+				e.stopPropagation();
+				e.preventDefault();
+				 var settings = {
+				 	values: [
+                               {markup: '<div>Options</div><div class="divider"></div>'},
+                               {html:{path:'popup.html'}}
+                           ],
+                   	color: "blue",
+                    width: "500px",
+                   	onClick: function (ind, val) {
+                   		console.log('clicked');
+                   	}
+                   };
+               $(this).simple$popup(settings);
+			};
+			btn.on('click', showPopup);
+      $('#btn2').on('click', showPopupHtml);
 			
 		});
 	</script>
